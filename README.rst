@@ -1,5 +1,5 @@
-TestDBs
-=======
+Testtable
+=========
 Don't know why I didn't do this long ago. Yeh for Django.
 
 A note: You must install/remove tables one by one. I don't like to offer the risk you may accidentally uninstall, say, the Stars table when it could take three hours to load (these are only Python scripts)
@@ -16,7 +16,7 @@ In settings.py, ::
 
     INSTALLED_APPS = [
         ...
-        'testdb.apps.TestdbConfig',
+        'testtable.apps.TesttableConfig',
         ]
 
 
@@ -24,11 +24,11 @@ Add a test database table
 -------------------------
 In shell, ::
     
-    python manage.py populatetesttable <db_name>
+    python manage.py raisetesttable <db_name>
 
 To see available database tables, run with no database names, ::
 
-    python manage.py populatetesttable
+    python manage.py raisetesttable
 
 
 Remove a test database table
@@ -58,7 +58,7 @@ Colors
     HTML color names. 864 entries. From https://github.com/codebrainz/color-names
 
 BibleBooks
-   Books of the King James Bile, with cross-references. 80 entries. Constructed from https://en.wikipedia.org/wiki/List_of_books_of_the_King_James_Version
+   Books of the King James Bible, with cross-references to other Bibles (Vulgate, etc.). 80 entries. Constructed from https://en.wikipedia.org/wiki/List_of_books_of_the_King_James_Version
    
 Trees
    Tree names. 419 entries. Ony two columns, 'name', 'latin name'. From various UK local government sources.

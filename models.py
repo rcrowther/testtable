@@ -1,5 +1,15 @@
 from django.db import models
 
+
+class ChristmasSong(models.Model):
+    gift = models.CharField(
+      unique=True,
+      max_length=126,
+      help_text="Gift for the day.",
+      )
+      
+      
+      
 class Country(models.Model):
     iso = models.CharField(
       unique=True,

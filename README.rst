@@ -68,5 +68,3 @@ Mineral
     
 Stars
     Basic details on all visible stars. 87,474 entries (may take hours to load on an SQLite DB) Mix of text and numeric data, with only five columns.  Modified from http://astronexus.com/node/34
-
-Trees is interesting because it is unique on 'latin name' and the 'name' text is complex. BibleBooks is interesting because no column has precidence. Mineral is a longer list, with few columns but an interesting BooleanField.

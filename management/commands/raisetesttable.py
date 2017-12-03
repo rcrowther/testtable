@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import connection
 from django.core.management import call_command
 
-from .tabledata import tabledata, to_string
+from testtable.tabledata import tabledata, to_string, exists
 
 
 
@@ -46,11 +46,16 @@ class Command(BaseCommand):
         self.stdout.write(to_string())
         
     def handle(self, *args, **options):
+        call_command("migrate", '--run-syncdb')
+
         if (not options['tables']):
             self.print_dbs()
             return
 
-        call_command("migrate", '--run-syncdb')
+        for t in options['tables']:
+            if (exists(t)):
+                self.stdout.write("Table '{}' is already populated (drop if you want to repopulate)".format(t))
+                return
 
         #self.verbosity
         for table in options['tables']:

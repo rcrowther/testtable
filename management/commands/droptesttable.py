@@ -2,8 +2,9 @@ import csv
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import connection
+from django.core.management import call_command
 
-from .tabledata import tabledata, to_string
+from testtable.tabledata import tabledata, to_string
 
 
 
@@ -33,6 +34,7 @@ class Command(BaseCommand):
         if (not options['tables']):
             self.print_dbs()
             return
+
         for table in options['tables']:
             try:
               model = tabledata[table].model
@@ -46,6 +48,8 @@ class Command(BaseCommand):
                 self.stdout.write('table "{}" dropped'.format(table))
             else:
                 self.stdout.write('table "{}" failed to drop?'.format(table))
+
+        call_command("remove_stale_contenttypes")
         self.stdout.write('Done')
          
     

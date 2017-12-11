@@ -79,7 +79,7 @@ class Command(BaseCommand):
                 self.stdout.write('table "{}" populated'.format(table))
             else:
                 self.stdout.write('table "{}" failed to populate? Some data may have been written'.format(table))
-            self.stdout.write('{} entries written'.format(idx))
+            self.stdout.write('{} entries written'.format(idx + 1))
         self.stdout.write('Done')
          
     

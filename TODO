@@ -1,2 +1,8 @@
-Defend CL against table existance
-Populate existing tables?
+#? Defend CL against table existance
+#? Populate existing tables with blank info (or that out of remit)?
+#? bulk load faster
+#? be savage and strict and eliminate table fields from table data, by reflecting the model?
+#? warning about load times
+#? progress bar nice
+#? backup tables before generator write
+#? colours (IANA?) probaly has online version for generator

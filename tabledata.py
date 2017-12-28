@@ -1,7 +1,8 @@
 import collections
 
 from testtable.models import (
-ChristmasSong, BibleBooks, Country, Color, Tree, Mineral, Star
+ChristmasSong, BibleBooks, Country, Color, Tree, Mineral, 
+Language, Star
 )
 
 TableData = collections.namedtuple('TableData', 'model description fields count filepath')
@@ -32,6 +33,10 @@ tabledata = {
     Mineral, "List of common mineral names, true/false if the mineral is scientificly classified, and why",
     ['name', 'isvalid', 'reason'], 1506, './testtable/csv/minerals.csv'
 ), 
+'language' : TableData(
+    Language, "List of languages from ISO639-3 (three-letter codes) with other classification and cross-reference data", 
+    ['id', 'part2B', 'part2T', 'part1', 'scope', 'type', 'name', 'comment'], 7849, './testtable/csv/languages_iso3.csv'
+),
 'star': TableData(
     Star, "Data on visible stars with common name, distance, magnitude, and color data", 
     ['name', 'distance', 'magnitude', 'spectrum', 'color'], 87474, './testtable/csv/stars.csv'

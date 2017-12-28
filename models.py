@@ -7,7 +7,12 @@ class ChristmasSong(models.Model):
       max_length=126,
       help_text="Gift for the day.",
       )
-      
+
+
+    def __str__(self):
+      return "pk={} gift={}".format(
+      self.pk, self.gift
+      )       
       
       
 class Country(models.Model):
@@ -23,7 +28,7 @@ class Country(models.Model):
       )
 
     def __str__(self):
-      return "{0} {1}".format(
+      return "iso={} name={}".format(
       self.iso, self.name
       ) 
 
@@ -81,8 +86,8 @@ class Color(models.Model):
       )
 
     def __str__(self):
-      return "{0}".format(
-      self.name
+      return "name={} title={}".format(
+      self.name, self.title
       )      
       
       
@@ -101,8 +106,8 @@ class Tree(models.Model):
       )
 
     def __str__(self):
-      return "{0}".format(
-      self.title
+      return "name={} latin={}".format(
+      self.title, self.latin
       )
 
 
@@ -124,7 +129,7 @@ class Mineral(models.Model):
       )
       
     def __str__(self):
-      return "{0}".format(
+      return "name={}".format(
       self.name
       )
 
@@ -161,6 +166,91 @@ class Star(models.Model):
       )
       
     def __str__(self):
-      return "{0}-{1}".format(
-      self.pk, self.name
+      return "pk={} name={} distance={} magnitude={}".format(
+      self.pk, self.name, self.distance, self.magnitude
+      )
+
+
+
+class Language(models.Model):
+    '''
+    Layout from http://www-01.sil.org/iso639-3/download.asp. The Django 
+    string convention of empty string is used, not null=True. blank=True
+    is used to indicate a possible empty value. 'scope' and 'type' 
+    columns are defined with choices.
+    '''
+    id = models.CharField(
+      db_index=True,
+      max_length=3,
+      primary_key=True,
+      help_text="The three-letter 639-3 identifier.",
+      )
+      
+    part2B = models.CharField(
+      max_length=3,
+      blank=True,
+      help_text="Equivalent 639-2 identifier of the bibliographic applications code set, if there is one.",
+      )
+      
+    part2T = models.CharField(
+      max_length=3,
+      blank=True,
+      help_text="Equivalent 639-2 identifier of the terminology applications code set, if there is one.",
+      )
+      
+    part1 = models.CharField(
+      max_length=2,
+      blank=True,
+      help_text="Equivalent 639-1 identifier, if there is one.",
+      )
+      
+    INDIVIDUAL = 'I'
+    MACROLANGUAGE = 'M'
+    SPECIAL = 'S'
+    SCOPE_CHOICES = (
+        (INDIVIDUAL, 'Individual'),
+        (MACROLANGUAGE, 'Macrolanguage'),
+        (SPECIAL, 'Special'),
+    )
+    scope = models.CharField(
+      max_length=1,
+      choices=SCOPE_CHOICES,
+      help_text="I(ndividual), M(acrolanguage), S(pecial).",
+      )
+
+    ANCIENT = 'A'
+    CONSTRUCTED = 'C'
+    EXTINCT = 'E'
+    HISTORICAL = 'H'
+    LIVING = 'L'
+    SPECIAL = 'S'
+    TYPE_CHOICES = (
+        (ANCIENT, 'Ancient'),
+        (CONSTRUCTED, 'Constructed'),
+        (EXTINCT, 'Extinct'),
+        (HISTORICAL, 'Historical'),
+        (LIVING, 'Living'),
+        (SPECIAL, 'Special'),
+        )      
+    type = models.CharField(
+      max_length=1,
+      choices=TYPE_CHOICES,
+      help_text="A(ncient), C(onstructed), E(xtinct), H(istorical), L(iving), S(pecial).",
+      )
+      
+    name = models.CharField(
+      "Reference name",
+      max_length=150,
+      help_text="Reference language name.",
+      )
+      
+    comment = models.CharField(
+      max_length=150,
+      blank=True,
+      help_text="Comment relating to one or more of the columns.",
+      )
+      
+    def __str__(self):
+      return "id='{}' part1='{}' scope='{}' type='{}' name='{}' comment='{}'".format(
+      self.pk, self.part1, self.scope, self.type, self.name, self.comment
       )

@@ -86,15 +86,16 @@ Stars
 
 Add a new table
 ----------------
-(Optional) If the data can be sourced online, build a generator to grab the data from a source then, if necessary, convert to csv. Give the file a name which will be unambiguous but terse.
 
-(if nit generated, see above) Get a CSV file and place in the directory '/csv'. Wikipedia is a good source of info - grab data from the 'edit' page, then use regex 'search/replace' to turn into a CSV file.
+- (Optional) If the data can be sourced online, build a generator to grab the data from a source then, if necessary, convert to csv. Give the file a name which will be unambiguous but terse.
 
-Build a model for the CSV data.
+- (if not generated, see above) Get a CSV file and place in the directory '/csv'. Wikipedia is a good source of info - grab data from the 'edit' page, then use regex 'search/replace' to turn into a CSV file.
 
-Add the new model to the imports in 'tabledata.py' so 'tabledata' can see it.
+- Build a model for the CSV data.
 
-Add an entry to 'tabledata.py' in the 'tabledata' tuple. This has some repetition of the Models, but adds a lot of extra data. The form of the data is usually not important, it should be terse and friendly (or intriuging!). But the filename must be correct, and the fields must match the declarations in the model. 
+- Add the new model to the imports in 'tabledata.py' so 'tabledata' can see it.
+
+- Add an entry to 'tabledata.py' in the 'tabledata' tuple. This has some repetition of the Models, but adds a lot of extra data. The form of the data is usually not important, it should be terse and friendly (or intriuging!). But the filename must be correct, and the fields must match the declarations in the model. 
 
 
 That's it, done, ::
